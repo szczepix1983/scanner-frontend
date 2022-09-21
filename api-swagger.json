@@ -1,0 +1,679 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api Documentation",
+    "version": "1.0",
+    "title": "Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "host": "localhost:9000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "download-controller",
+      "description": "Download Controller"
+    },
+    {
+      "name": "errors-controller",
+      "description": "Errors Controller"
+    },
+    {
+      "name": "facade-controller",
+      "description": "Facade Controller"
+    },
+    {
+      "name": "products-controller",
+      "description": "Products Controller"
+    },
+    {
+      "name": "tags-controller",
+      "description": "Tags Controller"
+    },
+    {
+      "name": "website-controller",
+      "description": "Website Controller"
+    }
+  ],
+  "paths": {
+    "/download/process": {
+      "get": {
+        "tags": [
+          "download-controller"
+        ],
+        "summary": "process",
+        "operationId": "processUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Download"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/download/process/{facade}": {
+      "get": {
+        "tags": [
+          "download-controller"
+        ],
+        "summary": "getByFacade",
+        "operationId": "getByFacadeUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "facade",
+            "in": "path",
+            "description": "facade",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Download"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/errors/process": {
+      "get": {
+        "tags": [
+          "errors-controller"
+        ],
+        "summary": "process",
+        "operationId": "processUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Errors"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/errors/process/{facade}": {
+      "get": {
+        "tags": [
+          "errors-controller"
+        ],
+        "summary": "getByFacade",
+        "operationId": "getByFacadeUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "facade",
+            "in": "path",
+            "description": "facade",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/facade/find/{facade}": {
+      "get": {
+        "tags": [
+          "facade-controller"
+        ],
+        "summary": "getByFacade",
+        "operationId": "getByFacadeUsingGET_2",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "facade",
+            "in": "path",
+            "description": "facade",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Facade"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/products/process": {
+      "get": {
+        "tags": [
+          "products-controller"
+        ],
+        "summary": "process",
+        "operationId": "processUsingGET_2",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Products"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/products/process/{facade}": {
+      "get": {
+        "tags": [
+          "products-controller"
+        ],
+        "summary": "getByFacade",
+        "operationId": "getByFacadeUsingGET_3",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "facade",
+            "in": "path",
+            "description": "facade",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/tags/process": {
+      "get": {
+        "tags": [
+          "tags-controller"
+        ],
+        "summary": "process",
+        "operationId": "processUsingGET_3",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tags"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/website/process": {
+      "get": {
+        "tags": [
+          "website-controller"
+        ],
+        "summary": "process",
+        "operationId": "processUsingGET_4",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Website"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/website/process/{facade}": {
+      "get": {
+        "tags": [
+          "website-controller"
+        ],
+        "summary": "getByFacade",
+        "operationId": "getByFacadeUsingGET_4",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "facade",
+            "in": "path",
+            "description": "facade",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Website"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Download": {
+      "type": "object",
+      "properties": {
+        "downloaded": {
+          "type": "boolean"
+        },
+        "path": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "title": "Download"
+    },
+    "Endpoint": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "pattern": {
+          "$ref": "#/definitions/EndpointPattern"
+        }
+      },
+      "title": "Endpoint"
+    },
+    "EndpointPattern": {
+      "type": "object",
+      "properties": {
+        "container": {
+          "$ref": "#/definitions/Pattern"
+        },
+        "imagepattern": {
+          "$ref": "#/definitions/Pattern"
+        },
+        "namepattern": {
+          "$ref": "#/definitions/Pattern"
+        },
+        "pricepattern": {
+          "$ref": "#/definitions/Pattern"
+        },
+        "urlpattern": {
+          "$ref": "#/definitions/Pattern"
+        }
+      },
+      "title": "EndpointPattern"
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "HIGH",
+            "LOW",
+            "MEDIUM"
+          ]
+        },
+        "uid": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "title": "Error"
+    },
+    "Errors": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          }
+        }
+      },
+      "title": "Errors"
+    },
+    "Facade": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "endpoints": {
+          "$ref": "#/definitions/List«Endpoint»"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "priceformatter": {
+          "$ref": "#/definitions/List«string»"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "title": "Facade"
+    },
+    "List«Endpoint»": {
+      "type": "object",
+      "properties": {
+        "empty": {
+          "type": "boolean"
+        },
+        "traversableAgain": {
+          "type": "boolean"
+        }
+      },
+      "title": "List«Endpoint»"
+    },
+    "List«string»": {
+      "type": "object",
+      "properties": {
+        "empty": {
+          "type": "boolean"
+        },
+        "traversableAgain": {
+          "type": "boolean"
+        }
+      },
+      "title": "List«string»"
+    },
+    "Pattern": {
+      "type": "object",
+      "properties": {
+        "attr": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "insidepattern": {
+          "$ref": "#/definitions/Pattern"
+        },
+        "select": {
+          "type": "string"
+        }
+      },
+      "title": "Pattern"
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "float"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uid": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "title": "Product"
+    },
+    "Products": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Product"
+          }
+        }
+      },
+      "title": "Products"
+    },
+    "Tag": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "Tag"
+    },
+    "Tags": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tag"
+          }
+        }
+      },
+      "title": "Tags"
+    },
+    "Website": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WebsiteItem"
+          }
+        },
+        "logo": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "title": "Website"
+    },
+    "WebsiteItem": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "$ref": "#/definitions/Errors"
+        },
+        "image": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "float"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "title": "WebsiteItem"
+    }
+  }
+}

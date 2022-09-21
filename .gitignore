@@ -45,3 +45,5 @@ Thumbs.db
 *.mov
 *.wmv
 
+/node/
+/src/app/generic/

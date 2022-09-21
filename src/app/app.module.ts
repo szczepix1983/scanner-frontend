@@ -53,7 +53,7 @@ import {DialogService} from './service/dialog.service';
     FormsModule,
     MatCheckboxModule,
   ],
-  providers: [DialogService, EventService, DictionaryService],
+  providers: [{provide: DialogService}, {provide: EventService}, {provide: DictionaryService}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

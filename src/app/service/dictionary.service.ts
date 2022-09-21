@@ -4,7 +4,9 @@ import {take} from 'rxjs/operators';
 import {EventService} from 'src/app/service/event.service';
 import {DictionaryDto} from 'src/app/generic/models/dictionary-dto';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DictionaryService {
 
   constructor(private eventService: EventService, private dictionaryControllerService: DictionaryControllerService) {

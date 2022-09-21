@@ -6,7 +6,7 @@ describe('ImportDataService', () => {
   let service: DictionaryService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(DictionaryService);
   });
 

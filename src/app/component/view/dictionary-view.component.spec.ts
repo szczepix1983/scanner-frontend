@@ -8,8 +8,9 @@ describe('DictionaryViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DictionaryViewComponent ]
-    })
+    declarations: [DictionaryViewComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

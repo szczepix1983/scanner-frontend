@@ -8,16 +8,17 @@ import {HeaderComponent} from 'src/app/component/header/header.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
+    imports: [
         RouterTestingModule
-      ],
-      declarations: [
+    ],
+    declarations: [
         AppComponent,
         DictionaryViewComponent,
         FooterComponent,
         HeaderComponent,
-      ],
-    }).compileComponents();
+    ],
+    teardown: { destroyAfterEach: false }
+}).compileComponents();
   });
 
   it('should create the app', () => {

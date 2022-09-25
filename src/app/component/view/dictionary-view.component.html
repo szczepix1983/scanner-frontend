@@ -26,8 +26,8 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Akcje </th>
       <mat-cell *matCellDef="let row" >
-        <button mat-raised-button color="primary" (click)="dialogService.openEditDialog(row)">Edytuj</button>
-        <button mat-raised-button color="warn" (click)="dialogService.openDeleteDialog(row)">Usuń</button>
+        <button mat-raised-button color="primary" (click)="dialogService.openAlertDialog('edit')">Edytuj</button>
+        <button mat-raised-button color="warn" (click)="dialogService.openAlertDialog('delete')">Usuń</button>
       </mat-cell>
     </ng-container>
 

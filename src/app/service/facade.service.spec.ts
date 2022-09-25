@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DictionaryService } from 'src/app/service/dictionary.service';
+import { FacadeService } from 'src/app/service/facade.service';
 
 describe('ImportDataService', () => {
-  let service: DictionaryService;
+  let service: FacadeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
-    service = TestBed.inject(DictionaryService);
+    service = TestBed.inject(FacadeService);
   });
 
   it('should be created', () => {

@@ -21,7 +21,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
@@ -54,7 +54,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Website"
                 }
@@ -74,7 +74,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Tags"
                 }
@@ -94,7 +94,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Products"
                 }
@@ -124,7 +124,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
@@ -157,7 +157,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Facade"
                 }
@@ -177,7 +177,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Errors"
                 }
@@ -207,7 +207,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
@@ -230,7 +230,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
@@ -263,7 +263,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
@@ -428,8 +428,91 @@
           }
         }
       },
+      "Endpoint": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "pattern": {
+            "$ref": "#/components/schemas/EndpointPattern"
+          }
+        }
+      },
+      "EndpointPattern": {
+        "type": "object",
+        "properties": {
+          "container": {
+            "$ref": "#/components/schemas/Pattern"
+          },
+          "namepattern": {
+            "$ref": "#/components/schemas/Pattern"
+          },
+          "pricepattern": {
+            "$ref": "#/components/schemas/Pattern"
+          },
+          "urlpattern": {
+            "$ref": "#/components/schemas/Pattern"
+          },
+          "imagepattern": {
+            "$ref": "#/components/schemas/Pattern"
+          }
+        }
+      },
       "Facade": {
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "priceformatter": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "endpoints": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Endpoint"
+            }
+          }
+        }
+      },
+      "Pattern": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "select": {
+            "type": "string"
+          },
+          "attr": {
+            "type": "string"
+          },
+          "insidepattern": {
+            "$ref": "#/components/schemas/Pattern"
+          }
+        }
       },
       "Download": {
         "type": "object",

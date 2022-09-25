@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
-const routes: Routes = [];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+export const routes: Routes = [
+  {
+    title: 'Admin - errors summary',
+    path: 'admin-errors-summary',
+    loadComponent: () => import('./features/admin/errors-summary/errors-summary.component').then(m => m.ErrorsSummaryComponent)
+  }
+];

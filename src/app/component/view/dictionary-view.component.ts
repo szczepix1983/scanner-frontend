@@ -1,11 +1,11 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatTable, MatTableDataSource} from '@angular/material/table';
-import {DictionaryDto} from 'src/app/generic/models/dictionary-dto';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {DictionaryChangeEvent, DictionaryListChangeEvent, EventService} from 'src/app/service/event.service';
-import {DictionaryService} from 'src/app/service/dictionary.service';
+import {EventService, FacadeChangeEvent} from 'src/app/service/event.service';
+import {FacadeService} from 'src/app/service/facade.service';
 import {DialogService} from "../../service/dialog.service";
+import {Product} from "../../generic/models/product";
 
 @Component({
   selector: 'app-crud',
@@ -14,9 +14,9 @@ import {DialogService} from "../../service/dialog.service";
 })
 export class DictionaryViewComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'key', 'value', 'active', 'actions'];
-  dataSource: MatTableDataSource<DictionaryDto> = new MatTableDataSource();
+  dataSource: MatTableDataSource<Product> = new MatTableDataSource();
 
-  @ViewChild(MatTable) table: MatTable<DictionaryDto> | undefined;
+  @ViewChild(MatTable) table: MatTable<Product> | undefined;
 
   @ViewChild(MatPaginator, {static: false})
   set paginator(value: MatPaginator) {
@@ -28,38 +28,20 @@ export class DictionaryViewComponent implements AfterViewInit {
     this.dataSource.sort = value;
   }
 
-  constructor(public dialogService: DialogService, private dictionaryService: DictionaryService, private eventService: EventService) {
+  constructor(public dialogService: DialogService, private facadeService: FacadeService, private eventService: EventService) {
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator ?? null;
     this.dataSource.sort = this.sort ?? null;
 
-    this.eventService.onCreateChange.subscribe({
-        next: (event: DictionaryChangeEvent) => {
-          this.onCreationChange(event);
+    this.eventService.onFacadeChange.subscribe({
+        next: (event: FacadeChangeEvent) => {
+          this.onFacadeChange(event);
         }
       }
     );
-    this.eventService.onUpdateChange.subscribe({
-        next: (event: DictionaryChangeEvent) => {
-          this.onModificationChange(event);
-        }
-      }
-    );
-    this.eventService.onDeleteChange.subscribe({
-        next: (event: DictionaryChangeEvent) => {
-          this.onDeletionChange(event);
-        }
-      }
-    );
-    this.eventService.onReadChange.subscribe({
-        next: (event: DictionaryListChangeEvent) => {
-          this.onListChange(event);
-        }
-      }
-    );
-    this.dictionaryService.read();
+    this.facadeService.read('ascoin');
   }
 
   applyFilter(event: Event) {
@@ -70,32 +52,29 @@ export class DictionaryViewComponent implements AfterViewInit {
     }
   }
 
-  private onCreationChange(event: DictionaryChangeEvent) {
-    if (this.table && event.dictionary) {
-      this.dataSource.data.push(event.dictionary);
-      this.table.renderRows();
-    }
-  }
+  // private onCreationChange(event: DictionaryChangeEvent) {
+  //   if (this.table && event.dictionary) {
+  //     this.dataSource.data.push(event.dictionary);
+  //     this.table.renderRows();
+  //   }
+  // }
+  //
+  // private onModificationChange(event: DictionaryChangeEvent) {
+  //   if (this.table && event.dictionary) {
+  //     this.table.renderRows();
+  //   }
+  // }
+  //
+  // private onDeletionChange(event: DictionaryChangeEvent) {
+  //   if (this.table && event.dictionary) {
+  //     this.dataSource.data.splice(this.dataSource.data.indexOf(event.dictionary), 1);
+  //     this.table.renderRows();
+  //   }
+  // }
 
-  private onModificationChange(event: DictionaryChangeEvent) {
-    if (this.table && event.dictionary) {
-      this.table.renderRows();
-    }
-  }
-
-  private onDeletionChange(event: DictionaryChangeEvent) {
-    if (this.table && event.dictionary) {
-      this.dataSource.data.splice(this.dataSource.data.indexOf(event.dictionary), 1);
-      this.table.renderRows();
-    }
-  }
-
-  private onListChange(event: DictionaryListChangeEvent) {
-    if (this.table && event.dictionaryList) {
-      for (let dictionary of event.dictionaryList) {
-        this.dataSource.data.push(dictionary);
-      }
-      this.table.renderRows();
+  private onFacadeChange(event: FacadeChangeEvent) {
+    if (this.table && event.facade) {
+      console.log(event.facade.description);
     }
   }
 }
